@@ -1,1 +1,7 @@
 /target
+
+# Custom
+/checkpoints/*
+!/checkpoints/.gitkeep
+/data/*
+!/data/.gitkeep

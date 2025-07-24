@@ -4,3 +4,13 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+ort = "=2.0.0-rc.10"
+image = "0.25"
+show-image = { version = "=0.14.0", features = ["image", "raqote"] }
+ndarray = "0.16"
+raqote = { version = "0.8", default-features = false }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", default-features = false, features = [
+    "env-filter",
+    "fmt",
+] }
