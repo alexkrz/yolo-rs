@@ -18,5 +18,5 @@ cargo run
 
 ## Todos
 
-- [ ] Try out execution provider for Apple Neural Engine
+- [x] Try out execution provider for Apple Neural Engine
 - [ ] Try out execution provider for Nvidia Cuda
