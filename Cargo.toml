@@ -4,12 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-ort = { version = "2.0.0-rc.10", features = [
-    "cuda",
-    "tensorrt",
-    "directml",
-    "coreml",
-] }
+ort = { version = "2.0.0-rc.10" }
 image = "0.25"
 ndarray = "0.16" # Represent the image as ndarray
 raqote = { version = "0.8", default-features = false } # Used for drawing onto the image

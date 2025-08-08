@@ -5,10 +5,6 @@ use std::path::Path;
 use image::{GenericImageView, imageops::FilterType};
 use ndarray::{Array, Axis, s};
 use ort::{
-    execution_providers::{
-        CUDAExecutionProvider, CoreMLExecutionProvider, DirectMLExecutionProvider,
-        TensorRTExecutionProvider,
-    },
     inputs,
     session::{Session, SessionOutputs},
     value::TensorRef,
@@ -73,17 +69,7 @@ fn main() -> ort::Result<()> {
         input[[0, 2, y, x]] = (b as f32) / 255.;
     }
 
-    let mut model = Session::builder()?
-        .with_execution_providers([
-            // Prefer TensorRT over CUDA.
-            TensorRTExecutionProvider::default().build(),
-            CUDAExecutionProvider::default().build(),
-            // Use DirectML on Windows if NVIDIA EPs are not available
-            DirectMLExecutionProvider::default().build(),
-            // Or use ANE on Apple platforms
-            CoreMLExecutionProvider::default().build(),
-        ])?
-        .commit_from_file("checkpoints/yolov8m.onnx")?;
+    let mut model = Session::builder()?.commit_from_file("checkpoints/yolov8m.onnx")?;
 
     // Run YOLOv8 inference
     let outputs: SessionOutputs =
